@@ -87,7 +87,7 @@ const Profile: React.FC = () => {
             <div className="text-center">
               <div className="relative inline-block">
                 <img
-                  src={user?.avatar || 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop'}
+                  src={user?.avatar || 'https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg'}
                   alt={user?.name}
                   className="w-32 h-32 rounded-full object-cover mx-auto"
                 />

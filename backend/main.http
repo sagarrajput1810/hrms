@@ -1,0 +1,41 @@
+# Rest Client vsCode Extension
+# File name saves with .http extention
+
+
+@host = http://localhost:5000
+
+GET {{host}}/
+
+###
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+    "email":"sagar@gmail.com",
+    "password":"123456"
+}
+
+###
+
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{
+    "name": "Sagar Rajput",
+    "email": "sagar@gmail.com",
+    "username": "sagar",
+    "password": "123456",
+    "role": "admin"
+}
+
+###
+POST {{host}}/api/auth/profile
+Content-Type: application/json
+
+{
+    "name": "Sagar Rajput",
+    "email": "sagar@gmail.com",
+    "username": "sagar",
+    "password": "123456",
+    "role": "admin"
+}
