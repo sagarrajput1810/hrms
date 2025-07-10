@@ -11,7 +11,7 @@ POST {{host}}/api/auth/login
 Content-Type: application/json
 
 {
-    "email":"sagar@gmail.com",
+    "email":"krishna@gmail.com",
     "password":"123456"
 }
 
@@ -21,21 +21,88 @@ POST {{host}}/api/auth/register
 Content-Type: application/json
 
 {
-    "name": "Sagar Rajput",
-    "email": "sagar@gmail.com",
-    "username": "sagar",
+    "name": "krishna",
+    "email": "krishna@gmail.com",
+    "username": "krishna",
     "password": "123456",
-    "role": "admin"
+    "role": "hr"
 }
-
-###
-POST {{host}}/api/auth/profile
+### Update user profile
+PUT {{host}}/api/auth/profile
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjYxM2JlNzNmYTdlNDU0ZjRjYTBiMyIsImlhdCI6MTc1MTY0MjI0NywiZXhwIjoxNzUyMjQ3MDQ3fQ.Ik-z0ZBDwQj2YcW0csbalLTjowl2mgiVq637X9e53s4
 
 {
     "name": "Sagar Rajput",
-    "email": "sagar@gmail.com",
-    "username": "sagar",
-    "password": "123456",
-    "role": "admin"
+    "avatar": "https://example.com/avatar.jpg"
+}
+
+### DEPARTMENT ENDPOINTS
+### Get all departments (Any authenticated user can access)
+GET {{host}}/api/departments
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmY2ZmE2ODM1M2U3YzBlMjgwYmYwYiIsImlhdCI6MTc1MjEzMzU1OSwiZXhwIjoxNzUyNzM4MzU5fQ.6El6CpspfWqFjCe8cDrgBKg9u5fZoKkoTdkNvs99mEE
+
+### Create new department (Admin or HR only)
+POST {{host}}/api/departments
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmY2ZmE2ODM1M2U3YzBlMjgwYmYwYiIsImlhdCI6MTc1MjEzMzU1OSwiZXhwIjoxNzUyNzM4MzU5fQ.6El6CpspfWqFjCe8cDrgBKg9u5fZoKkoTdkNvs99mEE
+
+{
+    "name": "Engineering",
+    "code": "ENG",
+    "description": "Software Engineering Department",
+    "manager": "686f6fa68353e7c0e280bf0b",
+    "location": "Main Office",
+    "isActive": true
+}
+
+### EMPLOYEE ENDPOINTS
+
+### Get all employees with pagination and filters (Private)
+GET {{host}}/api/employees?page=1&limit=10&status=active&search=John
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmY2ZmE2ODM1M2U3YzBlMjgwYmYwYiIsImlhdCI6MTc1MjEzMzU1OSwiZXhwIjoxNzUyNzM4MzU5fQ.6El6CpspfWqFjCe8cDrgBKg9u5fZoKkoTdkNvs99mEE
+
+### Create new employee (Private - Admin/HR)
+POST {{host}}/api/employees
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmY2ZmE2ODM1M2U3YzBlMjgwYmYwYiIsImlhdCI6MTc1MjEzMzU1OSwiZXhwIjoxNzUyNzM4MzU5fQ.6El6CpspfWqFjCe8cDrgBKg9u5fZoKkoTdkNvs99mEE
+
+{
+    "personalInfo": {
+        "firstName": "Nidhika",
+        "lastName": "Chaudhary",
+        "dateOfBirth": "1990-05-15",
+        "gender": "Female",
+        "address": {
+            "street": "456 Oak Ave",
+            "city": "Anytown",
+            "state": "CA",
+            "zipCode": "90210",
+            "country": "USA"
+        },
+        "contact": {
+            "phone": "987-654-3210",
+            "emergencyContact": {
+                "name": "Krishna chauhan",
+                "relationship": "Husband",
+                "phone": "123-456-7890"
+            }
+        }
+    },
+    "jobInfo": {
+        "employeeId": "EMP002",
+        "hireDate": "2023-01-20",
+        "position": "Software Engineer",
+        "department": "686f71e58353e7c0e280bf1c",
+        "salary": {
+            "baseSalary": 75000
+        },
+        "status": "active"
+    },
+    "userInfo": {
+        "email": "nidhika@example.com",
+        "password": "123456",
+        "role": "employee"
+    }
 }
