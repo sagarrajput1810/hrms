@@ -21,11 +21,11 @@ POST {{host}}/api/auth/register
 Content-Type: application/json
 
 {
-    "name": "krishna",
-    "email": "krishna@gmail.com",
-    "username": "krishna",
+    "name": "nidhika",
+    "email": "nidhika@gmail.com",
+    "username": "nidhik",
     "password": "123456",
-    "role": "hr"
+    "role": "employee"
 }
 ### Update user profile
 PUT {{host}}/api/auth/profile
@@ -40,7 +40,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjYxM2JlN
 ### DEPARTMENT ENDPOINTS
 ### Get all departments (Any authenticated user can access)
 GET {{host}}/api/departments
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmY2ZmE2ODM1M2U3YzBlMjgwYmYwYiIsImlhdCI6MTc1MjEzMzU1OSwiZXhwIjoxNzUyNzM4MzU5fQ.6El6CpspfWqFjCe8cDrgBKg9u5fZoKkoTdkNvs99mEE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NzIxMmE3ZDljN2ZjMmE2NDVlYzM5ZCIsImlhdCI6MTc1MjMzNTIyMywiZXhwIjoxNzUyOTQwMDIzfQ.iEBs-tOlC-H6W5pRj9DSMbhgKp8DuhYH7l5AIOEHtpg
 
 ### Create new department (Admin or HR only)
 POST {{host}}/api/departments
@@ -61,48 +61,84 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmY2ZmE2O
 ### Get all employees with pagination and filters (Private)
 GET {{host}}/api/employees?page=1&limit=10&status=active&search=John
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmY2ZmE2ODM1M2U3YzBlMjgwYmYwYiIsImlhdCI6MTc1MjEzMzU1OSwiZXhwIjoxNzUyNzM4MzU5fQ.6El6CpspfWqFjCe8cDrgBKg9u5fZoKkoTdkNvs99mEE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NzIxMmE3ZDljN2ZjMmE2NDVlYzM5ZCIsImlhdCI6MTc1MjMzNTIyMywiZXhwIjoxNzUyOTQwMDIzfQ.iEBs-tOlC-H6W5pRj9DSMbhgKp8DuhYH7l5AIOEHtpg
 
 ### Create new employee (Private - Admin/HR)
 POST {{host}}/api/employees
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmY2ZmE2ODM1M2U3YzBlMjgwYmYwYiIsImlhdCI6MTc1MjEzMzU1OSwiZXhwIjoxNzUyNzM4MzU5fQ.6El6CpspfWqFjCe8cDrgBKg9u5fZoKkoTdkNvs99mEE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NzIxMmE3ZDljN2ZjMmE2NDVlYzM5ZCIsImlhdCI6MTc1MjMzNTIyMywiZXhwIjoxNzUyOTQwMDIzfQ.iEBs-tOlC-H6W5pRj9DSMbhgKp8DuhYH7l5AIOEHtpg
 
 {
-    "personalInfo": {
-        "firstName": "Nidhika",
-        "lastName": "Chaudhary",
-        "dateOfBirth": "1990-05-15",
-        "gender": "Female",
-        "address": {
-            "street": "456 Oak Ave",
-            "city": "Anytown",
-            "state": "CA",
-            "zipCode": "90210",
-            "country": "USA"
-        },
-        "contact": {
-            "phone": "987-654-3210",
-            "emergencyContact": {
-                "name": "Krishna chauhan",
-                "relationship": "Husband",
-                "phone": "123-456-7890"
-            }
-        }
-    },
-    "jobInfo": {
-        "employeeId": "EMP002",
-        "hireDate": "2023-01-20",
-        "position": "Software Engineer",
-        "department": "686f71e58353e7c0e280bf1c",
-        "salary": {
-            "baseSalary": 75000
-        },
-        "status": "active"
-    },
-    "userInfo": {
-        "email": "nidhika@example.com",
-        "password": "123456",
-        "role": "employee"
+  "personalInfo": {
+    "firstName":      "Nidhika",
+    "lastName":       "Chaudhary",
+    "dateOfBirth":    "1990-05-15",
+    "gender":         "female",
+    "maritalStatus":  "married",
+    "nationality":    "Indian",
+    "phone":          "987-654-3210",
+    "emergencyContact": {
+      "name":         "Krishna Chauhan",
+      "relationship": "Husband",
+      "phone":        "123-456-7890"
     }
+  },
+  "address": {
+    "street":  "456 Oak Ave",
+    "city":    "Anytown",
+    "state":   "CA",
+    "zipCode": "90210",
+    "country": "USA"
+  },
+  "jobInfo": {
+    "department":     "6872819414bcb6a38fb2f036",
+    "position":       "Software Engineer",
+    "employmentType": "full-time",
+    "joinDate":       "2023-01-20",
+    "workLocation":   "office"
+  },
+  "salary": {
+    "baseSalary": 75000,
+    "currency":   "USD",
+    "payFrequency": "monthly"
+  },
+  "benefits": {
+    "healthInsurance":  true,
+    "dentalInsurance":  false,
+    "visionInsurance":  false,
+    "retirement401k":   true
+  },
+  "userInfo": {
+    "email":    "nidhika1@example.com",
+    "password": "123456",
+    "role":     "employee"
+  }
+}
+
+
+###
+# Get all attendance records (with optional filters & pagination)
+GET {{host}}/api/attendance?page=1&limit=10&employee=<employeeId>&date=2025-07-13&status=present
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NzIxMmE3ZDljN2ZjMmE2NDVlYzM5ZCIsImlhdCI6MTc1MjMzNTIyMywiZXhwIjoxNzUyOTQwMDIzfQ.iEBs-tOlC-H6W5pRj9DSMbhgKp8DuhYH7l5AIOEHtpg
+
+### Create manual attendance record (CORRECTED)
+POST {{host}}/api/attendance
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NzIxMmE3ZDljN2ZjMmE2NDVlYzM5ZCIsImlhdCI6MTc1MjMzNTIyMywiZXhwIjoxNzUyOTQwMDIzfQ.iEBs-tOlC-H6W5pRj9DSMbhgKp8DuhYH7l5AIOEHtpg
+
+
+{
+  "employee": "{{employeeId}}",
+  "date": "2025-07-13T00:00:00.000Z",
+  "checkIn": {
+    "time": "2025-07-13T09:00:00.000Z",
+    "location": "office",
+    "coordinates": "12.9716,77.5946"
+  },
+  "checkOut": {
+    "time": "2025-07-13T17:30:00.000Z",
+    "location": "office",
+    "coordinates": "12.9716,77.5946"
+  },
+  "status": "present"
 }
